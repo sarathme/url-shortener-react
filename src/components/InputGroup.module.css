@@ -1,0 +1,26 @@
+.inputGroup {
+  width: 90%;
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.inputGroup > label {
+  font-weight: 500;
+  font-size: var(--fs-450);
+}
+.inputGroup > label span {
+  font-weight: 400;
+  font-size: var(--fs-400);
+  margin-left: 1rem;
+  color: red;
+}
+
+.inputGroup > input {
+  padding: 0.8em;
+  border-radius: 0.4em;
+  outline: none;
+  border: none;
+  box-shadow: 0 0 2px black;
+  color: inherit;
+}
