@@ -21,14 +21,16 @@
 .urlData {
   font-size: 0.85rem;
   font-weight: 700;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
   text-align: center;
+  max-width: 100%;
 }
 
 .urlData li {
   padding: 0.6em;
+  width: 25%;
   border: 1px solid var(--clr-primary-350-50);
+  word-break: break-all;
 }
 
 .urlData li a {
