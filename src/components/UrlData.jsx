@@ -1,7 +1,6 @@
 import styles from "./UrlData.module.css";
 
 function UrlData({ url, index }) {
-  console.log(url);
   return (
     <ul className={styles.urlData} role="list">
       <li>{index}</li>

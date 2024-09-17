@@ -7,38 +7,31 @@ import { useNavigate } from "react-router-dom";
 import UrlData from "./UrlData";
 
 function AllUrls() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [urls, seturls] = useState(true);
-  const navigate = useNavigate();
-  // window.location.reload();
+  const [isLoading, setIsLoading] = useState(false);
+  const [urls, seturls] = useState([]);
 
   useEffect(() => {
     async function fetchUrls() {
-      const token = localStorage.getItem("jtokenUrl");
-      try {
-        const res = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/v1/shorten/`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        seturls(res.data.data.urls);
-        console.log(res.data.data.urls);
-      } catch (err) {
-        console.log(err);
-        toast.error(err.response.data.message);
-        navigate("/login");
-      } finally {
-        setIsLoading(false);
-      }
+      setIsLoading(true);
+      const res = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/v1/shorten`,
+        {
+          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jtokenUrl")}`,
+          },
+        }
+      );
+
+      seturls(res.data.data.urls);
+      setIsLoading(false);
     }
 
     fetchUrls();
   }, []);
 
   if (isLoading) return <Spinner />;
+
   console.log("URLS", urls);
   return (
     <div className={styles.tableContainer}>

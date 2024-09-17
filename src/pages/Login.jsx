@@ -3,7 +3,6 @@ import InputGroup from "../components/InputGroup";
 import { useFormik } from "formik";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { useState } from "react";
 
 const initialValues = {
   email: "",
@@ -29,34 +28,23 @@ const validate = (values) => {
   return errors;
 };
 function Login() {
-  const [isLoggingIn, setLoggingIn] = useState(false);
-
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues,
     validate,
     onSubmit: async (values) => {
-      const body = { ...values };
-
+      const { email, password } = values;
       try {
-        setLoggingIn(true);
         const res = await axios.post(
           `${import.meta.env.VITE_API_URL}/api/v1/users/login`,
-          body,
-          {
-            withCredentials: true,
-          }
+          { email, password },
+          { withCredentials: true }
         );
-        console.log(res);
-        localStorage.setItem("jtokenUrl", res.data.token);
 
-        toast.success("login successful");
+        localStorage.setItem("jtokenUrl", res.data.token);
         navigate("/app");
       } catch (err) {
         console.log(err);
-        toast.error(err.response.data.message);
-      } finally {
-        setLoggingIn(false);
       }
     },
   });
