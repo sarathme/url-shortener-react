@@ -1,4 +1,5 @@
-import Content from "../components/Content";
+import { Outlet } from "react-router-dom";
+
 import NavBar from "../components/NavBar";
 import SideBar from "../components/SideBar";
 
@@ -8,7 +9,7 @@ function AppLayout() {
       <NavBar />
 
       <SideBar />
-      <Content />
+      <Outlet />
     </main>
   );
 }

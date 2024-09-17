@@ -6,6 +6,7 @@ import NotFound from "./pages/NotFound";
 import { Toaster } from "react-hot-toast";
 import ResetPassword from "./pages/ResetPassword";
 import AppLayout from "./pages/AppLayout";
+import CreateNewUrl from "./components/CreateNewUrl";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
           <Route path="resetPassword/:resetToken" element={<ResetPassword />} />
           <Route path="app" element={<AppLayout />}>
             <Route path="url" element={<h1>URLs</h1>} />
-            <Route path="createNew" element={<h1>Create New</h1>} />
+            <Route path="createNew" element={<CreateNewUrl />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
