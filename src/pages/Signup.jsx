@@ -1,8 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import InputGroup from "../components/InputGroup";
 import { useFormik } from "formik";
-import axios from "axios";
-import toast from "react-hot-toast";
 import { useState } from "react";
 
 const initialValues = {
