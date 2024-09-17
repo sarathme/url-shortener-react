@@ -25,6 +25,7 @@
     --fs-400: 1.15rem;
     --fs-450: 1.5rem;
     --fs-500: 1.7rem;
+    --fs-300: 1rem;
   }
 }
 
@@ -165,7 +166,7 @@ textarea:not([rows]) {
   font-weight: 500;
   cursor: pointer;
   border: 0;
-  padding: 1em 2.5em;
+  padding: 0.6em 2.5em;
   /* width: 50%; */
   margin: 0 auto;
   background: var(--clr-primary-350);

@@ -1,6 +1,7 @@
 .form {
   width: 50%;
-  margin: 4rem auto;
+  padding: 1em;
+  /* margin: 2rem auto; */
 }
 
 .form button[type="submit"] {

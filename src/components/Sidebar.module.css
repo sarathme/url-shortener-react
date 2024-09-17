@@ -1,16 +1,18 @@
 .sidebar {
   color: var(--clr-primary-350);
   background: var(--clr-accent-100);
-  font-size: var(--fs-450);
+  font-size: var(--fs-300);
   font-weight: 700;
   width: fit-content;
   margin: 1rem auto;
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  align-items: center;
+
   border-radius: 1em;
   overflow: hidden;
   outline: 1px solid var(--clr-primary-350);
+  padding: 0.65em;
 }
 
 .sidebar > a:first-child {
@@ -28,6 +30,7 @@
 .sidebar > a:global(.active) {
   background: var(--clr-primary-350);
   color: var(--clr-accent-100);
+  border-radius: 0.6em;
 }
 
 @media (min-width: 60em) {
@@ -35,7 +38,9 @@
     background: var(--clr-primary-350);
     color: var(--clr-accent-100);
     flex-direction: column;
-    padding: 2em 0.6em;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding: 6em 0.6em;
     margin: 0;
     border-radius: 0;
   }
