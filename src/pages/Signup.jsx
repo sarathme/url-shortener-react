@@ -2,6 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import InputGroup from "../components/InputGroup";
 import { useFormik } from "formik";
 import { useState } from "react";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 const initialValues = {
   name: "",
@@ -43,7 +45,34 @@ function SignUp() {
   const formik = useFormik({
     initialValues,
     validate,
-    onSubmit: (values) => {},
+    onSubmit: async (values) => {
+      const body = { ...values };
+
+      delete body.confirmPassword;
+      const signupToast = toast.loading("Creating User...");
+      try {
+        setIsCreating(true);
+        const res = await axios.post(
+          `${import.meta.env.VITE_API_URL}/api/v1/users/signup`,
+          body,
+          {
+            withCredentials: true,
+          }
+        );
+        console.log(res);
+        toast.dismiss(signupToast);
+        toast.success(res.data.message);
+        toast.success(
+          "Please Verify your account by clicking the link received in your provided email"
+        );
+      } catch (err) {
+        console.log(err);
+        toast.error(err.response.data.message);
+      } finally {
+        setIsCreating(false);
+        toast.dismiss(signupToast);
+      }
+    },
   });
 
   return (

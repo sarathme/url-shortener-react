@@ -7,6 +7,8 @@ import { Toaster } from "react-hot-toast";
 import ResetPassword from "./pages/ResetPassword";
 import AppLayout from "./pages/AppLayout";
 import CreateNewUrl from "./components/CreateNewUrl";
+import VerifiedAccount from "./pages/VerifiedAccount";
+import AlreadyVerified from "./pages/AlreadyVerified";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route index element={<Navigate to="app" />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
+          <Route path="verify-account/:token" element={<VerifiedAccount />} />
+          <Route path="alreadyVerified" element={<AlreadyVerified />} />
           <Route path="forgotPassword" element={<ForgotPassword />} />
           <Route path="resetPassword/:resetToken" element={<ResetPassword />} />
           <Route path="app" element={<AppLayout />}>

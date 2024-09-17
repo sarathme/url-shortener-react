@@ -176,6 +176,10 @@ textarea:not([rows]) {
   background: var(--clr-primary-400);
 }
 
+.login-block > button[type="submit"]:disabled {
+  cursor: not-allowed;
+}
+
 .app-layout {
   display: grid;
   min-height: 90vh;
