@@ -1,0 +1,24 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--fs-450);
+  padding: 0.8em;
+  border-bottom: 1px solid var(--clr-primary-350-50);
+}
+
+.cta {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-size: var(--fs-450);
+}
+.cta button {
+  padding: 0.4em 0.6em;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  background-color: var(--clr-secondary-400);
+  color: var(--clr-accent-100);
+  border-radius: 0.2em;
+}
