@@ -15,16 +15,16 @@
   --clr-secondary-400: hsl(345, 100%, 45%);
   /* TYPOGRAPHY */
 
-  --fs-400: 0.6rem;
-  --fs-450: 0.85rem;
-  --fs-500: 1rem;
+  --fs-400: 0.85rem;
+  --fs-450: 1rem;
+  --fs-500: 1.25rem;
 }
 
 @media (min-width: 60em) {
   :root {
-    --fs-400: 1rem;
-    --fs-450: 1.25rem;
-    --fs-500: 1.5rem;
+    --fs-400: 1.15rem;
+    --fs-450: 1.5rem;
+    --fs-500: 1.7rem;
   }
 }
 

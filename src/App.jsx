@@ -26,7 +26,7 @@ function App() {
           <Route path="app" element={<AppLayout />}>
             <Route index element={<Navigate to="url" />} />
             <Route path="url" element={<AllUrls />} />
-            <Route path="createNew" element={<CreateNewUrl />} />
+            <Route path="shorten" element={<CreateNewUrl />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

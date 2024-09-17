@@ -5,7 +5,7 @@ function SideBar() {
   return (
     <aside className={styles.sidebar}>
       <NavLink to="url">Your URLs</NavLink>
-      <NavLink to="createNew">Create New URL</NavLink>
+      <NavLink to="shorten">Create New URL</NavLink>
     </aside>
   );
 }

@@ -9,22 +9,31 @@ import UrlData from "./UrlData";
 function AllUrls() {
   const [isLoading, setIsLoading] = useState(false);
   const [urls, seturls] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchUrls() {
-      setIsLoading(true);
-      const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/v1/shorten`,
-        {
-          withCredentials: true,
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("jtokenUrl")}`,
-          },
-        }
-      );
+      try {
+        setIsLoading(true);
+        console.log(localStorage.getItem("jtokenUrl"));
+        console.log(import.meta.env.VITE_API_URL);
+        const res = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/v1/shorten`,
+          {
+            withCredentials: true,
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("jtokenUrl")}`,
+            },
+          }
+        );
 
-      seturls(res.data.data.urls);
-      setIsLoading(false);
+        seturls(res.data.data.urls);
+      } catch (err) {
+        toast.error(err.response.data.message);
+        navigate("/login");
+      } finally {
+        setIsLoading(false);
+      }
     }
 
     fetchUrls();
@@ -32,7 +41,6 @@ function AllUrls() {
 
   if (isLoading) return <Spinner />;
 
-  console.log("URLS", urls);
   return (
     <div className={styles.tableContainer}>
       <div className={styles.table}>
