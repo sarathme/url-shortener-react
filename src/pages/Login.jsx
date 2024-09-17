@@ -48,7 +48,7 @@ function Login() {
         localStorage.setItem("jtokenUrl", res.data.token);
         navigate("/app");
       } catch (err) {
-        console.log(err);
+        toast.error(err.response.data.message);
       } finally {
         setIsLoggingIn(false);
         toast.dismiss(loggingToast);
