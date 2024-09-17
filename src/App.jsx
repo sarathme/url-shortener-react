@@ -9,6 +9,7 @@ import AppLayout from "./pages/AppLayout";
 import CreateNewUrl from "./components/CreateNewUrl";
 import VerifiedAccount from "./pages/VerifiedAccount";
 import AlreadyVerified from "./pages/AlreadyVerified";
+import AllUrls from "./components/AllUrls";
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
           <Route path="forgotPassword" element={<ForgotPassword />} />
           <Route path="resetPassword/:resetToken" element={<ResetPassword />} />
           <Route path="app" element={<AppLayout />}>
-            <Route path="url" element={<h1>URLs</h1>} />
+            <Route index element={<Navigate to="url" />} />
+            <Route path="url" element={<AllUrls />} />
             <Route path="createNew" element={<CreateNewUrl />} />
           </Route>
           <Route path="*" element={<NotFound />} />
