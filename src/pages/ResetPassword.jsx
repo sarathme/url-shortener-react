@@ -30,7 +30,30 @@ function ResetPassword() {
       passwordConfirm: "",
     },
     validate,
-    onSubmit: (values) => {},
+    onSubmit: async (values) => {
+      const body = { ...values };
+
+      delete body.passwordConfirm;
+      const updateToast = toast.loading("Changing password...");
+      try {
+        setIsUpdating(true);
+        const res = await axios.patch(
+          `${
+            import.meta.env.VITE_API_URL
+          }/api/v1/users/resetPassword/${resetToken}`,
+          body
+        );
+
+        toast.success("Password changed successfully");
+        localStorage.setItem("jtoken", res.data.token);
+        navigate("/login");
+      } catch (err) {
+        toast.error(err.response.data.message);
+      } finally {
+        setIsUpdating(false);
+        toast.dismiss(updateToast);
+      }
+    },
   });
 
   return (

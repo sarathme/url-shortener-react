@@ -35,7 +35,30 @@ function Login() {
   const formik = useFormik({
     initialValues,
     validate,
-    onSubmit: async (values) => {},
+    onSubmit: async (values) => {
+      const body = { ...values };
+
+      try {
+        setLoggingIn(true);
+        const res = await axios.post(
+          `${import.meta.env.VITE_API_URL}/api/v1/users/login`,
+          body,
+          {
+            withCredentials: true,
+          }
+        );
+        console.log(res);
+        localStorage.setItem("jtokenUrl", res.data.token);
+
+        toast.success("login successful");
+        navigate("/app");
+      } catch (err) {
+        console.log(err);
+        toast.error(err.response.data.message);
+      } finally {
+        setLoggingIn(false);
+      }
+    },
   });
 
   return (

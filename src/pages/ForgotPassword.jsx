@@ -22,7 +22,35 @@ function ForgotPassword() {
   const formik = useFormik({
     initialValues: { email: "" },
     validate,
-    onSubmit: async (values) => {},
+    onSubmit: async (values) => {
+      const body = { ...values };
+
+      const sendingEmailToast = toast.loading("Sending Reset Email...");
+      try {
+        setIsSendingEmail(true);
+        const res = await axios.post(
+          `${import.meta.env.VITE_API_URL}/api/v1/users/forgotPassword`,
+          body,
+          {
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/json",
+              "x-frontend-url": window.location.origin,
+            },
+          }
+        );
+
+        toast.dismiss(sendingEmailToast);
+        toast.success(res.data.message);
+
+        navigate("/login");
+      } catch (err) {
+        toast.dismiss(sendingEmailToast);
+        toast.error(err.response.data.message);
+      } finally {
+        setIsSendingEmail(false);
+      }
+    },
   });
 
   return (

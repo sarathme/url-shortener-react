@@ -24,7 +24,7 @@ function App() {
           <Route path="forgotPassword" element={<ForgotPassword />} />
           <Route path="resetPassword/:resetToken" element={<ResetPassword />} />
           <Route path="app" element={<AppLayout />}>
-            <Route index element={<Navigate to="url" />} />
+            <Route index element={<Navigate to="createNew" />} />
             <Route path="url" element={<AllUrls />} />
             <Route path="createNew" element={<CreateNewUrl />} />
           </Route>

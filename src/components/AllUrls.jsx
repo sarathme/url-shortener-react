@@ -4,10 +4,13 @@ import Spinner from "./Spinner";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import UrlData from "./UrlData";
 
 function AllUrls() {
   const [isLoading, setIsLoading] = useState(true);
+  const [urls, seturls] = useState(true);
   const navigate = useNavigate();
+  // window.location.reload();
 
   useEffect(() => {
     async function fetchUrls() {
@@ -21,12 +24,14 @@ function AllUrls() {
             },
           }
         );
-
-        console.log(res);
+        seturls(res.data.data.urls);
+        console.log(res.data.data.urls);
       } catch (err) {
         console.log(err);
         toast.error(err.response.data.message);
         navigate("/login");
+      } finally {
+        setIsLoading(false);
       }
     }
 
@@ -34,7 +39,7 @@ function AllUrls() {
   }, []);
 
   if (isLoading) return <Spinner />;
-
+  console.log("URLS", urls);
   return (
     <div className={styles.tableContainer}>
       <div className={styles.table}>
@@ -44,12 +49,9 @@ function AllUrls() {
           <li>Short URL</li>
           <li>No. Of Times Clicked</li>
         </ul>
-        <ul className={styles.urlData} role="list">
-          <li>Hi</li>
-          <li>Hi</li>
-          <li>Hi</li>
-          <li>Hi</li>
-        </ul>
+        {urls.map((url, i) => (
+          <UrlData key={url.shortId} index={i + 1} url={url} />
+        ))}
       </div>
     </div>
   );

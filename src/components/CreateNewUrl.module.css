@@ -2,3 +2,20 @@
   width: 50%;
   margin: 4rem auto;
 }
+
+.form button[type="submit"] {
+  cursor: pointer;
+  padding: 0.65em;
+  border: 0;
+  outline: 0;
+  background-color: var(--clr-primary-350);
+  border-radius: 0.25em;
+  color: var(--clr-accent-100);
+  font-size: var(--fs-400);
+  font-weight: 600;
+}
+
+.form button[type="submit"]:hover,
+.form button[type="submit"]:focus {
+  background-color: var(--clr-primary-400);
+}
